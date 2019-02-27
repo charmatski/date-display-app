@@ -18,7 +18,7 @@ volumes: [
           try {
             container('custom-docker') {
                 echo "custom docker!"
-                sh "git pull https://github.com/charmatski/date-display-app"
+                sh "git clone https://github.com/charmatski/date-display-app ."
                 sh "npm install"
                 sh "npm test"
             }
