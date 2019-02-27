@@ -11,15 +11,14 @@ volumes: [
     node(label) {
         echo "Your Pipeline works!"
         stage('Build') {
-          container('custom-docker') {
-            sh "gradle build"
-            npm install
-            npm test
+          container('jenkins') {
+            sh "jenkins!"
           }
         }
         stage('Test') {
           try {
             container('custom-docker') {
+                sh "custom docker!"
                 npm install
                 npm test
             }
