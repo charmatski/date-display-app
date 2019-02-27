@@ -1,6 +1,6 @@
 node() {
     echo "Your Pipeline works!"
     sh('ls -la')
-    npm install
-    npm test
+    sh('npm install')
+    sh('npm test')
 }
