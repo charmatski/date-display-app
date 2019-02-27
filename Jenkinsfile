@@ -12,13 +12,13 @@ volumes: [
         echo "Your Pipeline works!"
         stage('Build') {
           container('jenkins') {
-            sh "jenkins!"
+            echo "jenkins!"
           }
         }
         stage('Test') {
           try {
             container('custom-docker') {
-                sh "custom docker!"
+                echo "custom docker!"
                 npm install
                 npm test
             }
