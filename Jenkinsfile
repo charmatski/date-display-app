@@ -11,8 +11,17 @@ volumes: [
     node(label) {
         echo "Your Pipeline works!"
         stage('Build') {
+          container('custom-docker') {
+            sh "gradle build"
+            npm install
+            npm test
+          }
+        }
+        stage('Test') {
           try {
-            container('gradle') {
+            container('custom-docker') {
+                npm install
+                npm test
             }
           }
           catch (exc) {
@@ -20,14 +29,5 @@ volumes: [
             throw(exc)
           }
         }
-        stage('Test') {
-          container('gradle') {
-            sh "gradle build"
-          }
-        }
-
-        sh('ls -la')
-        sh('npm install')
-        sh('npm test')
     }
   }
